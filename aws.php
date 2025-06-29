@@ -1,6 +1,6 @@
 <?php
 	if (!isset($_GET["mikrotik"])) {
-        $scriptUrl = (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://{$_SERVER["HTTP_HOST"]}" . strtok($_SERVER["REQUEST_URI"], '?');
+        	$scriptUrl = (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://{$_SERVER["HTTP_HOST"]}" . strtok($_SERVER["REQUEST_URI"], '?');
 		echo(
 			'<p>To use this tool copy and paste following commands to your mikrotik console:</p>' . PHP_EOL
 			. "<code>/tool fetch url=\"{$scriptUrl}?mikrotik\" dst-path=aws_range<br>" . PHP_EOL
@@ -9,7 +9,7 @@
 		exit(0);
 	}
 
-	// aws range: https://ip-ranges.amazonaws.com/ip-ranges.json
+	// AWS IP ranges: https://ip-ranges.amazonaws.com/ip-ranges.json
 	$json = json_decode(file_get_contents('https://ip-ranges.amazonaws.com/ip-ranges.json'));
 
 	echo ("/log info \"Loading AWS ipv4 address list. Creation Time: {$json->createDate}\"" . PHP_EOL);
